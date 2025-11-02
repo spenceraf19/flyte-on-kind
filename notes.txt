@@ -1,0 +1,7 @@
+TODO:
+- different clusters (dev, staging, prod)
+
+Order of operations:
+- kind create cluster --name flyte
+- bash helm-install.sh
+

@@ -1,0 +1,53 @@
+minio:
+  enabled: true
+  accessKey: minioadmin
+  secretKey: minioadmin
+
+postgres:
+  enabled: true
+  postgresUser: flyte
+  postgresPassword: flyte
+  postgresDatabase: flyte
+
+admin:
+  replicas: 1
+  config:
+    db:
+      type: postgres
+      postgres:
+        host: postgres.flyte.svc.cluster.local
+        port: 5432
+        database: flyte
+        username: flyte
+        password: flyte
+
+datacatalog:
+  replicas: 1
+  config:
+    db:
+      type: postgres
+      postgres:
+        host: postgres.flyte.svc.cluster.local
+        port: 5432
+        database: flyte
+        username: flyte
+        password: flyte
+
+syncresources:
+  replicas: 1
+  config:
+    db:
+      type: postgres
+      postgres:
+        host: postgres.flyte.svc.cluster.local
+        port: 5432
+        database: flyte
+        username: flyte
+        password: flyte
+
+console:
+  replicas: 1
+
+propeller:
+  replicas: 1
+
