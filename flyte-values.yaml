@@ -9,45 +9,31 @@ postgres:
   postgresPassword: flyte
   postgresDatabase: flyte
 
-admin:
-  replicas: 1
-  config:
-    db:
-      type: postgres
-      postgres:
-        host: postgres.flyte.svc.cluster.local
-        port: 5432
-        database: flyte
-        username: flyte
-        password: flyte
-
-datacatalog:
-  replicas: 1
-  config:
-    db:
-      type: postgres
-      postgres:
-        host: postgres.flyte.svc.cluster.local
-        port: 5432
-        database: flyte
-        username: flyte
-        password: flyte
-
-syncresources:
-  replicas: 1
-  config:
-    db:
-      type: postgres
-      postgres:
-        host: postgres.flyte.svc.cluster.local
-        port: 5432
-        database: flyte
-        username: flyte
-        password: flyte
+db:
+  datacatalog:
+    database:
+      port: 5432
+      username: flyte
+      host: postgres.flyte.svc.cluster.local
+      dbname: flyte
+      password: flyte
+  admin:
+    database:
+      port: 5432
+      username: flyte
+      host: postgres.flyte.svc.cluster.local
+      dbname: flyte
+      password: flyte
+  syncresources:
+    database:
+      port: 5432
+      username: flyte
+      host: postgres.flyte.svc.cluster.local
+      dbname: flyte
+      password: flyte
 
 console:
   replicas: 1
 
 propeller:
   replicas: 1
-
