@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flyteconsole-ingress
+  namespace: flyte
+spec:
+  rules:
+  - host: flyteconsole.local.flyte.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: flyteconsole      # Must match your Service name!
+            port:
+              number: 80            # The FlyteConsole service port (usually 80)

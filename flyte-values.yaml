@@ -9,6 +9,16 @@ postgres:
   postgresPassword: flyte
   postgresDatabase: flyte
 
+storage:
+  type: s3
+  bucketName: my-s3-bucket
+  s3:
+    endpoint: http://minio.flyte.svc.cluster.local:9000
+    region: us-east-1
+    authType: accesskey
+    accessKey: minioadmin
+    secretKey: minioadmin
+
 db:
   datacatalog:
     database:
