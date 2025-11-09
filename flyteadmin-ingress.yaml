@@ -6,6 +6,10 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
+  tls:
+  - hosts:
+    - flyteadmin.local.flyte.local
+    secretName: flyteadmin-tls  # must match the name of a Kubernetes TLS secret!
   rules:
   - host: flyteadmin.local.flyte.local
     http:

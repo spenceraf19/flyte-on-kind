@@ -13,7 +13,7 @@ storage:
   type: s3
   bucketName: my-s3-bucket
   s3:
-    endpoint: http://minio.flyte.svc.cluster.local:9000
+    endpoint: http://minio.local.flyte.local
     region: us-east-1
     authType: accesskey
     accessKey: minioadmin

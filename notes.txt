@@ -35,6 +35,13 @@ Order of operations:
       }
     }
   ]'
+- openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -out flyteadmin-tls.crt -keyout flyteadmin-tls.key \
+  -subj "/CN=flyteadmin.local.flyte.local"
+- kubectl create secret tls flyteadmin-tls \
+  --cert=flyteadmin-tls.crt \
+  --key=flyteadmin-tls.key \
+  -n flyte
 - export FLYTECTL_CONFIG=~/.flyte/config.yaml
 
 debugging
