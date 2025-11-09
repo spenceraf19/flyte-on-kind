@@ -1,11 +1,40 @@
 TODO:
 - different clusters (dev, staging, prod)
+- container registry
+- mounted cloud volume
+- terraform
+
+Preparation
+- add to /etc/hosts in wsl:
+	127.0.0.1       minio.local.flyte.dev
+	127.0.0.1       flyteconsole.local.flyte.dev
+	127.0.0.1       flyteadmin.local.flyte.dev
+- add to C:\Windows\System32\drivers\etc\hosts
+	127.0.0.1 flyteconsole.local.flyte.local
+	::1 flyteconsole.local.flyte.local
+- pip install -r requirements.txt
 
 Order of operations:
-- kind create cluster --name flyte
+- kind create cluster --name flyte --config cluster-config.yaml
 - bash helm-install.sh
-- kubectl label node flyte-control-plane ingress-ready=true
-- pip install -r requirements.txt
+- kubectl patch deployment ingress-nginx-controller -n ingress-nginx \
+  --type='json' \
+  -p='[
+    {
+      "op": "replace",
+      "path": "/spec/template/spec/containers/0/resources",
+      "value": {
+        "requests": {
+          "cpu": "500m",
+          "memory": "1Gi"
+        },
+        "limits": {
+          "cpu": "2",
+          "memory": "2Gi"
+        }
+      }
+    }
+  ]'
 - export FLYTECTL_CONFIG=~/.flyte/config.yaml
 
 debugging

@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minio-ingress
+  name: flyteadmin-ingress
   namespace: flyte
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
   rules:
-  - host: minio.local.flyte.local
+  - host: flyteadmin.local.flyte.local
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: minio            # must match your Minio service name!
+            name: flyteadmin
             port:
-              number: 9000
+              number: 81

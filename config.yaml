@@ -1,0 +1,17 @@
+admin:
+  endpoint: http://flyteadmin.local.flyte.dev      # No port needed, uses port 80 (HTTP)
+  insecure: true
+
+storage:
+  type: s3
+  connection:
+    endpoint: http://minio.local.flyte.dev         # No port needed, uses port 80 (HTTP)
+    access_key: minioadmin
+    secret_key: minioadmin
+    additional_settings:
+      region: us-east-1
+
+  s3:
+    endpoint: http://minio.local.flyte.dev         # No port needed, uses port 80 (HTTP)
+    access_key: minioadmin
+    secret_key: minioadmin

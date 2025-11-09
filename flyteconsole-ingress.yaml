@@ -5,7 +5,7 @@ metadata:
   namespace: flyte
 spec:
   rules:
-  - host: flyteconsole.local.flyte.dev
+  - host: flyteconsole.local.flyte.local
     http:
       paths:
       - path: /

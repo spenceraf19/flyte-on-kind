@@ -27,14 +27,13 @@ kubectl wait --namespace ingress-nginx \
 # 6. Install Flyte with custom values file
 helm install flyte flyteorg/flyte-core -n flyte -f flyte-values.yaml
 
-# 7. Apply ingress resource for Minio
+# 7. Apply ingress resources for Minio, flyteadmin, flyteconsole
 kubectl apply -f minio-ingress.yaml
-
-# 8. Apply ingress resource for flyteconsole
+kubectl apply -f flyteadmin-ingress.yaml
 kubectl apply -f flyteconsole-ingress.yaml
 
 # (optionally, apply ingress resources for FlyteConsole/FlyteAdmin if created)
 # kubectl apply -f flyteconsole-ingress.yaml
 # kubectl apply -f flyteadmin-ingress.yaml
 
-echo "Setup complete! Don't forget to add '127.0.0.1 minio.local.flyte.dev' to your /etc/hosts file."
+echo "Setup complete! Don't forget to add '127.0.0.1 minio.local.flyte.local' to your /etc/hosts file."
